@@ -80,7 +80,17 @@ if game_function:
 * Plinko: Successfully opens Plinko
 
 ### Testing Blackjack
-#### Hit --> Successfully adds a new card to user pile and totals sum
+
+#### Hit
+```
+while True:
+  hit = input("Hit (H) or Stand (S)?\nType Here: ")
+   if hit.lower() == 'hit' or hit.lower() == "h":
+     player_card = random.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'])
+     print("New Card ", player_card)
+     player_cards.append(player_card)
+```
+Successfully adds a new card to user pile and totals sum
 #### Stand --> Successfully ends the users round
 #### Win/Lose Condition --> Successfully ends game when
 * user/dealer hits 21
