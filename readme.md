@@ -13,10 +13,12 @@ Blackjack:
 Run the given code and select blackjack by entering in b or B into the console.
 Follow the prompts to hit or stand and try to get a hand value as close to 21 as possible without exceeding it.
 Receive feedback and compliments based on the game outcome.
+
 Higher or Lower:
 Run the given code and select higher or lower by entering in h or H into the console.
 Guess whether the next random number will be higher or lower than the current number.
 Accumulate money for each correct guess and receive compliments.
+
 Plinko:
 Run the given code and select plinko by entering in p or P into the console.
 Click the "Start Plinko" button to drop the ball.
