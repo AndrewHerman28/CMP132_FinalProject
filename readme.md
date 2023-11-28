@@ -100,6 +100,27 @@ else:
 Successfully ends the users round
 
 
+#### Win/Lose Condition
+```python 3
+if dealer_score == 21:
+   print("Dealer blackjack! Good Try!")
+   return 1
+elif dealer_score > 21:
+   print("Dealer Busted! You Win. Amazing Job!")
+   return 5
+
+if player_score > dealer_score:
+   print("You win! You're Awesome!")
+   return 5
+elif player_score < dealer_score:
+   print("Dealer Wins. You got it next time!")
+   return 1
+else:
+   print("Push.")
+   return 1
+```
+Successfully determines who wins and the appropriate amount of money is given to user
+
 
 #### Win/Lose Condition --> Successfully ends game when
 * user/dealer hits 21
