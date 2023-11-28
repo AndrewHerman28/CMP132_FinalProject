@@ -102,6 +102,9 @@ Successfully ends the users round
 
 #### Win/Lose Condition
 ```python 3
+if player_score > 21:
+   print("You busted! You lose.")
+   return 1
 if dealer_score == 21:
    print("Dealer blackjack! Good Try!")
    return 1
