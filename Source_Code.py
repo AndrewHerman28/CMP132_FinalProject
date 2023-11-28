@@ -1,7 +1,11 @@
 import random
 import tkinter as tk
+
+#Players initial money
 money = 0
 
+
+#Phrases for the end of the application
 happiness_phrases = [
     "You're Awesome!",
     "You make a difference.",
@@ -35,6 +39,7 @@ happiness_phrases = [
 ]
 
 
+#Ball used for plinko
 class Ball:
     def __init__(self, canvas, slot, slot_width):
         self.canvas = canvas
@@ -51,7 +56,7 @@ class Ball:
     def move(self):
         direction = random.choice([-1, 1])
         self.slot += direction
-        self.slot = max(0, min(num_slots - 1, self.slot))
+        self.slot = max(0, min(8, self.slot))
         self.y += 20  # Move the ball down
         self.canvas.coords(self.ball, self.get_ball_coords())
         return self.y
@@ -81,9 +86,16 @@ class PlinkoGUI(tk.Tk):
         self.results_label.pack(pady=10)
 
     def draw_plinko_board(self):
+        result_values = [1, 3, 5, 7, 10, 7, 5, 3, 1]
+
         for i in range(self.num_slots + 1):
             x = i * self.slot_width
             self.canvas.create_line(x, 0, x, 400, fill="black")
+            
+            # Display point value in each column
+            points = result_values[i-1]
+            self.canvas.create_text(x + self.slot_width / 2, 420, text=str(points))
+
 
     def play_game(self):
         self.clear_canvas()
@@ -94,28 +106,12 @@ class PlinkoGUI(tk.Tk):
             ball = Ball(self.canvas, random.randint(0, self.num_slots - 1), self.slot_width)
             final_slot = self.drop_ball(ball)
 
-        self.display_results()
         return self.get_result(final_slot)
 
     def get_result(self, final_slot):
-        if final_slot == 0:
-            return 1
-        elif final_slot == 1:
-            return 3
-        elif final_slot == 2:
-            return 5
-        elif final_slot == 3:
-            return 7
-        elif final_slot == 4:
-            return 10
-        elif final_slot == 5:
-            return 7
-        elif final_slot == 6:
-            return 5
-        elif final_slot == 7:
-            return 3
-        elif final_slot == 8:
-            return 1
+        result_values = [1, 3, 5, 7, 10, 7, 5, 3, 1]
+        return result_values[final_slot]
+
 
     def drop_ball(self, ball):
         while ball.move() < 400:
@@ -126,12 +122,6 @@ class PlinkoGUI(tk.Tk):
         self.slots[final_slot] += 1
         return final_slot
 
-    def display_results(self):
-        results_text = "Results:\n"
-        for i, count in enumerate(self.slots):
-            results_text += f"Slot {i}: {count} balls\n"
-
-        self.results_label.config(text=results_text)
 
     def clear_canvas(self):
         self.canvas.delete("all")
@@ -171,7 +161,7 @@ class BlackJack:
             return 5
 
         while True:
-            hit = input("Hit or stand? ")
+            hit = input("Hit (H) or Stand (S)?\nType Here: ")
             if hit.lower() == 'hit' or hit.lower() == "h":
                 player_card = random.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'])
                 print("New Card ", player_card)
@@ -239,10 +229,10 @@ class HigherOrLowerGUI(tk.Tk):
         self.value_label = tk.Label(self, text="Current Value: 5")
         self.value_label.pack(pady=10)
 
-        self.start_button = tk.Button(self, text="Start Game", command=self.play_game)
+        self.start_button = tk.Button(self, text="Start New Game", command=self.play_game)
         self.start_button.pack(pady=10)
 
-        self.quit_button = tk.Button(self, text="Quit", command=self.quit)
+        self.quit_button = tk.Button(self, text="Quit", command=self.close_window)
         self.quit_button.pack(pady=10)
 
         self.higher_button = tk.Button(self, text="Higher", command=lambda: self.make_guess("higher"))
@@ -261,10 +251,10 @@ class HigherOrLowerGUI(tk.Tk):
         self.higher_button.pack(pady=10)
         self.lower_button.pack(pady=10)
 
-        # self.temp_money = 0
         self.multiplier = 1
         self.value = 5
 
+        #Updates the value of the players money that shows at the top of the screen
         self.update_money_label()
         self.result_label.config(text="")
         self.value_label.config(text=f"Current Value: {self.value}")
@@ -278,6 +268,7 @@ class HigherOrLowerGUI(tk.Tk):
             self.after(100, self.update_gui)
             self.update_money_label()
 
+    
     def make_guess(self, guess):
         self.higher_button.config(state=tk.DISABLED)
         self.lower_button.config(state=tk.DISABLED)
@@ -286,8 +277,10 @@ class HigherOrLowerGUI(tk.Tk):
 
         self.result_label.config(text=f"The new value was: {new_value}")
 
+        #if the guess is higher and that is correct or if the guess is lower and correct then reward player
         if (guess == "higher" and new_value > self.value) or (guess == "lower" and new_value < self.value):
             self.temp_money += self.multiplier
+            #The multiplier rewards more points each round for their streak that they are on
             self.multiplier += 1
             self.result_label.config(text="Correct! Great Job!")
         else:
@@ -302,6 +295,7 @@ class HigherOrLowerGUI(tk.Tk):
     def update_money_label(self):
         self.money_label.config(text=f"Money: ${self.temp_money}")
 
+    #When the use guesses incorrectlty, they can restart
     def end_game(self):
         self.result_label.config(text="Good Try! But that is incorrect")
         self.higher_button.config(state=tk.DISABLED)
@@ -309,34 +303,61 @@ class HigherOrLowerGUI(tk.Tk):
         self.playing = False
         self.start_button.pack(pady=10)
 
+    def close_window(self):
+        self.destroy()
+
+
+def display_balance():
+    print("Balance: ", money)
+
+def play_blackjack():
+    global money
+    blackjack_game = BlackJack()
+    money += blackjack_game.play_blackjack()
+
+def play_higher_lower():
+    global money
+    higher_lower_gui = HigherOrLowerGUI()
+    higher_lower_gui.mainloop()
+    money += higher_lower_gui.temp_money
+    print("Money Earned:", higher_lower_gui.temp_money)
+
+def play_plinko():
+    global money
+    num_slots = 9
+    plinko_gui = PlinkoGUI(num_slots)
+    plinko_gui.draw_plinko_board()
+    final_result = plinko_gui.play_game()
+    money += final_result
+    print("Money Earned:", final_result)
+
+def quit_applcation():
+    global running
+    running = False
+
+
 if __name__ == "__main__":
     running = True
+
+    game_functions = {
+        "q": quit_applcation,
+        "m": display_balance,
+        "b": play_blackjack,
+        "h": play_higher_lower,
+        "p": play_plinko
+    }
 
     while running:
         game_type = input("Type (B) Blackjack\nType (H) Higher or Lower\nType (P) Plinko\nType (M) View Balance\nType (Q) to quit\nType Here: ")
 
-        if game_type.lower() == "q":
-            running = False
-        elif game_type.lower() == "m":
-            print("Balance: ", money)
-        elif game_type.lower() == "b":
-            blackjack_game = BlackJack()
-            money += blackjack_game.play_blackjack()
-        elif game_type.lower() == "h":
-            higher_lower_gui = HigherOrLowerGUI()
-            higher_lower_gui.mainloop()
-            money += higher_lower_gui.temp_money
-            print("Money Earned:", higher_lower_gui.temp_money)
-        elif game_type.lower() == "p":
-            num_slots = 9
-            plinko_gui = PlinkoGUI(num_slots)
-            plinko_gui.draw_plinko_board()
-            final_result = plinko_gui.play_game()
-            money += final_result
-            print("Money Earned:", final_result)
+        game_function = game_functions.get(game_type.lower())
+        if game_function:
+            game_function()
+
            
 
 
+#For each dollar made, they earn a compliment
 print("You have earned $", money, "! Here are", money, "compliments!")
 for i in range(money):
     print(random.choice(happiness_phrases))
