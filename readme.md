@@ -2,9 +2,9 @@
 The goal for this repository contains a collection of three different games related to gambling. While that may sound pretty bad at first there will be no real life money at stake during this process. The reward for completing the games is a long list of compliments for you to fell better about yourself. The amount of compliments gained is proportioanl to the score you attain when completing the series of games.
 ## Games Included
 1. Blackjack:
-  *A classic card game where the goal is to have a hand value as close to 21 as possible without exceeding it. The numbers are constrained to a standard deck of cards.
+  * A classic card game where the goal is to have a hand value as close to 21 as possible without exceeding it. The numbers are constrained to a standard deck of cards.
 2. Higher or Lower:
-  *Guess whether the next random number will be higher or lower than the current number. The numbers are constrained to a standard deck of cards.
+  * Guess whether the next random number will be higher or lower than the current number. The numbers are constrained to a standard deck of cards.
 3. Plinko!:
    * A game of plinko where a ball is dropped and is randomly placed into nine different columns which holds different values.
 
