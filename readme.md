@@ -127,15 +127,33 @@ else:
 Successfully determines who wins and the appropriate amount of money is given to user
 
 
-#### Win/Lose Condition --> Successfully ends game when
-* user/dealer hits 21
-* user/dealer bust (Over 21)
-* User > Dealer (all under 21)
-* Dealer > User (all under 21)
-#### End Game --> Successfully ends game and adds money to user
 
 ### Testing Higher or Lower
 #### Start Game --> Successfully starts game
+
+#### Start Game
+```python 3
+self.start_button = tk.Button(self, text="Start New Game", command=self.play_game)
+self.start_button.pack(pady=10)
+
+def play_game(self):
+        self.playing = True
+        self.start_button.pack_forget()
+        self.higher_button.pack(pady=10)
+        self.lower_button.pack(pady=10)
+
+        self.multiplier = 1
+        self.value = 5
+
+        #Updates the value of the players money that shows at the top of the screen
+        self.update_money_label()
+        self.result_label.config(text="")
+        self.value_label.config(text=f"Current Value: {self.value}")
+        self.higher_button.config(state=tk.NORMAL)
+        self.lower_button.config(state=tk.NORMAL)
+```
+Successfully starts game
+
 #### Higher --> Successfully guesses higher
 #### Lower --> Successfully guesses lower
 #### Quit --> Successfully Closes window and adds money to user
