@@ -98,6 +98,7 @@ The amount of compliments is equal to the amount of money obtained after quiting
 ### Compliment List
 #### Successfully lists the amount of compliments for each dollar earned
 
-
+## Conclusion
+In conclusion, this repository presents a collection of three engaging games related to gambling: Blackjack, Higher or Lower, and Plinko. Despite the gambling theme, there is no real-life money at stake, and the reward for completing the games is a series of uplifting compliments designed to make players feel better about themselves. Overall, the project was a success. 
 ## How Justin learned GUI in python
 https://www.youtube.com/watch?v=ibf5cx221hk&ab_channel=NeuralNine
