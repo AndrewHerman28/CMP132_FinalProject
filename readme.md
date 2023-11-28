@@ -102,6 +102,9 @@ Successfully ends the users round
 
 #### Win/Lose Condition
 ```python 3
+if player_score == 21:
+   print("You got blackjack! Amazin Job!")
+   return 5
 if player_score > 21:
    print("You busted! You lose.")
    return 1
@@ -111,7 +114,6 @@ if dealer_score == 21:
 elif dealer_score > 21:
    print("Dealer Busted! You Win. Amazing Job!")
    return 5
-
 if player_score > dealer_score:
    print("You win! You're Awesome!")
    return 5
