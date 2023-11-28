@@ -82,7 +82,7 @@ if game_function:
 ### Testing Blackjack
 
 #### Hit
-```
+```python 3
 while True:
   hit = input("Hit (H) or Stand (S)?\nType Here: ")
    if hit.lower() == 'hit' or hit.lower() == "h":
