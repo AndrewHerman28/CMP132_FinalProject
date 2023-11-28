@@ -174,7 +174,7 @@ Successfully checks higher or lower
 * Successfully ends current round when guess is incorrect
 
 ### Testing Plinko
-#### Dropping Plinko Ball --> Successfully drops plinko ball and moves to different columns by random
+
 
 #### Dropping Plinko Ball
 ```python 3
@@ -190,7 +190,15 @@ def drop_ball(self, ball):
 Successfully drops plinko ball
 
 
-#### Win Condition --> Successfully adds money corrisponding to value of column the plinko lands in
+#### Win Condition
+```python 3
+def get_result(self, final_slot):
+        result_values = [1, 3, 5, 7, 10, 7, 5, 3, 1]
+        return result_values[final_slot]
+```
+Successfully adds money corrisponding to value of column the plinko lands in
+
+
 
 ### Testing Quit Application
 #### Quit --> Successfully Quits Application and runs compliment list
