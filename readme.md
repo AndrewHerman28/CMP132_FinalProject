@@ -175,6 +175,21 @@ Successfully checks higher or lower
 
 ### Testing Plinko
 #### Dropping Plinko Ball --> Successfully drops plinko ball and moves to different columns by random
+
+#### Dropping Plinko Ball
+```python 3
+def drop_ball(self, ball):
+        while ball.move() < 400:
+            self.update()
+            self.after(50)  # Delay for visualization
+
+        final_slot = ball.get_final_slot()
+        self.slots[final_slot] += 1
+        return final_slot
+```
+Successfully drops plinko ball
+
+
 #### Win Condition --> Successfully adds money corrisponding to value of column the plinko lands in
 
 ### Testing Quit Application
