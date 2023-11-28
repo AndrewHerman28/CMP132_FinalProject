@@ -69,10 +69,10 @@ The amount of compliments is equal to the amount of money obtained after quiting
 * Higher or Lower: Successfully opens Higher or Lower
 * Plinko: Successfully opens Plinko
 
-## Testing Blackjack
-### Hit --> Successfully adds a new card to user pile and totals sum
-### Stand --> Successfully ends the users round
-### Win/Lose Condition --> Successfully ends game when
+### Testing Blackjack
+#### Hit --> Successfully adds a new card to user pile and totals sum
+#### Stand --> Successfully ends the users round
+#### Win/Lose Condition --> Successfully ends game when
 * user/dealer hits 21
 * user/dealer bust (Over 21)
 * User > Dealer (all under 21)
