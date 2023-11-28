@@ -77,6 +77,26 @@ The amount of compliments is equal to the amount of money obtained after quiting
 * user/dealer bust (Over 21)
 * User > Dealer (all under 21)
 * Dealer > User (all under 21)
+#### End Game --> Successfully ends game and adds money to user
+
+### Testing Higher or Lower
+#### Start Game --> Successfully starts game
+#### Higher --> Successfully guesses higher
+#### Lower --> Successfully guesses lower
+#### Quit --> Successfully Closes window and adds money to user
+#### Win/Lose Conditions
+* Successfully continues round when guess is valid
+* Successfully ends current round when guess is incorrect
+
+### Testing Plinko
+#### Dropping Plinko Ball --> Successfully drops plinko ball and moves to different columns by random
+#### Win Condition --> Successfully adds money corrisponding to value of column the plinko lands in
+
+### Testing Quit Application
+#### Quit --> Successfully Quits Application and runs compliment list
+
+### Compliment List
+#### Successfully lists the amount of compliments for each dollar earned
 
 
 ## How Justin learned GUI in python
