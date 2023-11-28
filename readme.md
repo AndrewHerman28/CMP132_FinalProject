@@ -62,9 +62,9 @@ The amount of compliments is equal to the amount of money obtained after quiting
 
 ## Testing the Code.
 ### Opening Each Game
-test- 
+#### test- 
 * game_type = input()
-results-
+#### results-
 * Blackjack: Successfully opens Blackjack
 * Higher or Lower: Successfully opens Higher or Lower
 * Plinko: Successfully opens Plinko
