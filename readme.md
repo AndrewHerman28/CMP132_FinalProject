@@ -129,7 +129,6 @@ Successfully determines who wins and the appropriate amount of money is given to
 
 
 ### Testing Higher or Lower
-#### Start Game --> Successfully starts game
 
 #### Start Game
 ```python 3
@@ -154,8 +153,21 @@ def play_game(self):
 ```
 Successfully starts game
 
-#### Higher --> Successfully guesses higher
-#### Lower --> Successfully guesses lower
+#### Guess Higher/Lower
+```python 3
+#if the guess is higher and that is correct or if the guess is lower and correct then reward player
+        if (guess == "higher" and new_value > self.value) or (guess == "lower" and new_value < self.value):
+            self.temp_money += self.multiplier
+            #The multiplier rewards more points each round for their streak that they are on
+            self.multiplier += 1
+            self.result_label.config(text="Correct! Great Job!")
+        else:
+            self.end_game()
+```
+Successfully checks higher or lower
+
+
+
 #### Quit --> Successfully Closes window and adds money to user
 #### Win/Lose Conditions
 * Successfully continues round when guess is valid
