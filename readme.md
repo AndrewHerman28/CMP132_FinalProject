@@ -98,12 +98,17 @@ The amount of compliments is equal to the amount of money obtained after quiting
 ### Compliment List
 #### Successfully lists the amount of compliments for each dollar earned
 
-# Testing the Code 2
+# Testing the Code
 
-## Opening Each Game 2
-### Test Input 2
+## Opening Each Game
+### Test Input
 ```python 2
-game_type = input() 2
+game_type = input("Type (B) Blackjack\nType (H) Higher or Lower\nType (P) Plinko\nType (M) View Balance\nType (Q) to quit\nType Here: ")
+
+        game_function = game_functions.get(game_type.lower())
+        if game_function:
+            game_function()
+```
 
 
 ## Conclusion
