@@ -1,5 +1,6 @@
 import random
 import tkinter as tk
+from tkinter import messagebox
 money = 0
 
 happiness_phrases = [
@@ -58,7 +59,7 @@ class Ball:
 
     def get_final_slot(self):
         return self.slot
-    
+
 
 class PlinkoGUI(tk.Tk):
     def __init__(self, num_slots):
