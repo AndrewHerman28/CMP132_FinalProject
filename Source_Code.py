@@ -1,6 +1,5 @@
 import random
 import tkinter as tk
-from tkinter import messagebox
 money = 0
 
 happiness_phrases = [
@@ -59,7 +58,7 @@ class Ball:
 
     def get_final_slot(self):
         return self.slot
-
+    
 
 class PlinkoGUI(tk.Tk):
     def __init__(self, num_slots):
@@ -224,47 +223,91 @@ class BlackJack:
             return 1
 
 
-class HigherOrLowerGame:
+class HigherOrLowerGUI(tk.Tk):
     def __init__(self):
-        self.money = 0
+        super().__init__()
 
-    def start(self):
-        temp_money = 0
-        multiplier = 1
-        value = 5
+        self.title("Higher or Lower Game")
+        self.geometry("400x400")
 
-        while True:
-            action = input(f"Higher or Lower than:  {value}\nType (H) Higher or (L) Lower or (Q) quit\nType Here: ")
-            new_value = random.randint(1, 10)
+        self.money_label = tk.Label(self, text="Money: $0")
+        self.money_label.pack(pady=10)
 
-            if action.lower() == "q":
-                break
+        self.result_label = tk.Label(self, text="")
+        self.result_label.pack(pady=10)
 
-            print("The new value was: ", new_value)
+        self.value_label = tk.Label(self, text="Current Value: 5")
+        self.value_label.pack(pady=10)
 
-            if action.lower() == "h":
-                if new_value > value:
-                    print("Correct! Great Job!")
-                    temp_money += multiplier
-                else:
-                    print("Good Try! But that is incorrect")
-                    break
+        self.start_button = tk.Button(self, text="Start Game", command=self.play_game)
+        self.start_button.pack(pady=10)
 
-            if action.lower() == "l":
-                if new_value < value:
-                    print("Correct! Great Job!")
-                    temp_money += multiplier
-                else:
-                    print("Good Try! But that is incorrect")
-                    break
+        self.quit_button = tk.Button(self, text="Quit", command=self.quit)
+        self.quit_button.pack(pady=10)
 
-            value = new_value
-            multiplier += 1
-            print("Money Earned: ", temp_money)
+        self.higher_button = tk.Button(self, text="Higher", command=lambda: self.make_guess("higher"))
+        self.lower_button = tk.Button(self, text="Lower", command=lambda: self.make_guess("lower"))
 
+        self.value = 5
+        self.multiplier = 1
+        self.temp_money = 0
 
-        self.money += temp_money
-        return self.money
+        self.playing = False
+        self.value_var = tk.StringVar()
+
+    def play_game(self):
+        self.playing = True
+        self.start_button.pack_forget()
+        self.higher_button.pack(pady=10)
+        self.lower_button.pack(pady=10)
+
+        # self.temp_money = 0
+        self.multiplier = 1
+        self.value = 5
+
+        self.update_money_label()
+        self.result_label.config(text="")
+        self.value_label.config(text=f"Current Value: {self.value}")
+        self.higher_button.config(state=tk.NORMAL)
+        self.lower_button.config(state=tk.NORMAL)
+
+        self.update_gui()
+
+    def update_gui(self):
+        if self.playing:
+            self.after(100, self.update_gui)
+            self.update_money_label()
+
+    def make_guess(self, guess):
+        self.higher_button.config(state=tk.DISABLED)
+        self.lower_button.config(state=tk.DISABLED)
+
+        new_value = random.randint(1, 10)
+
+        self.result_label.config(text=f"The new value was: {new_value}")
+
+        if (guess == "higher" and new_value > self.value) or (guess == "lower" and new_value < self.value):
+            self.temp_money += self.multiplier
+            self.multiplier += 1
+            self.result_label.config(text="Correct! Great Job!")
+        else:
+            self.end_game()
+
+        self.value = new_value
+        self.value_label.config(text=f"Current Value: {self.value}")
+
+        self.higher_button.config(state=tk.NORMAL)
+        self.lower_button.config(state=tk.NORMAL)
+
+    def update_money_label(self):
+        self.money_label.config(text=f"Money: ${self.temp_money}")
+
+    def end_game(self):
+        self.result_label.config(text="Good Try! But that is incorrect")
+        self.higher_button.config(state=tk.DISABLED)
+        self.lower_button.config(state=tk.DISABLED)
+        self.playing = False
+        self.start_button.pack(pady=10)
 
 if __name__ == "__main__":
     running = True
@@ -280,8 +323,10 @@ if __name__ == "__main__":
             blackjack_game = BlackJack()
             money += blackjack_game.play_blackjack()
         elif game_type.lower() == "h":
-            higher_lower_game = HigherOrLowerGame()
-            money += higher_lower_game.start()
+            higher_lower_gui = HigherOrLowerGUI()
+            higher_lower_gui.mainloop()
+            money += higher_lower_gui.temp_money
+            print("Money Earned:", higher_lower_gui.temp_money)
         elif game_type.lower() == "p":
             num_slots = 9
             plinko_gui = PlinkoGUI(num_slots)
