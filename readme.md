@@ -68,7 +68,7 @@ The amount of compliments is equal to the amount of money obtained after quiting
 
 ### Opening Each Game
 #### Test Input
-```python 2
+```python 3
 game_type = input("Type (B) Blackjack\nType (H) Higher or Lower\nType (P) Plinko\nType (M) View Balance\nType (Q) to quit\nType Here: ")
 
 game_function = game_functions.get(game_type.lower())
@@ -85,13 +85,22 @@ if game_function:
 ```python 3
 while True:
   hit = input("Hit (H) or Stand (S)?\nType Here: ")
-   if hit.lower() == 'hit' or hit.lower() == "h":
+  if hit.lower() == 'hit' or hit.lower() == "h":
      player_card = random.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'])
      print("New Card ", player_card)
      player_cards.append(player_card)
 ```
-Successfully adds a new card to user pile and totals sum
-#### Stand --> Successfully ends the users round
+Successfully adds a new card to user pile
+
+#### Stand
+```python 3
+else:
+  break
+```
+Successfully ends the users round
+
+
+
 #### Win/Lose Condition --> Successfully ends game when
 * user/dealer hits 21
 * user/dealer bust (Over 21)
