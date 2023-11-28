@@ -60,11 +60,21 @@ A series of positive compliments is stored in a list
 Compliments are randomly selected and displayed to the user as a reward after playing a game.
 The amount of compliments is equal to the amount of money obtained after quiting the game.
 
+
+
+
+
 ## Testing the Code
+
 ### Opening Each Game
-#### test- 
-* game_type = input()
-#### results-
+#### Test Input
+```python 2
+game_type = input("Type (B) Blackjack\nType (H) Higher or Lower\nType (P) Plinko\nType (M) View Balance\nType (Q) to quit\nType Here: ")
+
+game_function = game_functions.get(game_type.lower())
+if game_function:
+   game_function()
+```
 * Blackjack: Successfully opens Blackjack
 * Higher or Lower: Successfully opens Higher or Lower
 * Plinko: Successfully opens Plinko
@@ -97,21 +107,6 @@ The amount of compliments is equal to the amount of money obtained after quiting
 
 ### Compliment List
 #### Successfully lists the amount of compliments for each dollar earned
-
-# Testing the Code
-
-## Opening Each Game
-### Test Input
-```python 2
-game_type = input("Type (B) Blackjack\nType (H) Higher or Lower\nType (P) Plinko\nType (M) View Balance\nType (Q) to quit\nType Here: ")
-
-game_function = game_functions.get(game_type.lower())
-if game_function:
-   game_function()
-```
-* Blackjack: Successfully opens Blackjack
-* Higher or Lower: Successfully opens Higher or Lower
-* Plinko: Successfully opens Plinko
 
 ## Conclusion
 In conclusion, this repository presents a collection of three engaging games related to gambling: Blackjack, Higher or Lower, and Plinko. Despite the gambling theme, there is no real-life money at stake, and the reward for completing the games is a series of uplifting compliments designed to make players feel better about themselves. Overall, the project was a success. 
