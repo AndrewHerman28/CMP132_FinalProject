@@ -26,11 +26,11 @@ The ball will bounce off pegs(that are not shown), and the final position determ
 Receive compliments based on your score.
 
 ## Code Structure
-This section is to show what each class contributed to the overall code.
+This section is to show how each class contributed to the overall code.
 
 * Plinko Game:
 
-The Plinko game is implemented using the tkinter library for the graphical user interface.
+The Plinko game is implemented using the tkinter library for the graphical user interface. 
 The main class PlinkoGUI handles the game window and user interaction.
 The Ball class represents the ball in the Plinko game, managing its movement and position.
 The game logic is divided into methods such as draw_plinko_board, play_game, get_result, drop_ball, and display_results.
