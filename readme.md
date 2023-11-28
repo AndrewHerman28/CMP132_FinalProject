@@ -203,8 +203,17 @@ Successfully adds money corrisponding to value of column the plinko lands in
 ### Testing Quit Application
 #### Quit --> Successfully Quits Application and runs compliment list
 
-### Compliment List
-#### Successfully lists the amount of compliments for each dollar earned
+
+
+#### Compliment List
+```python 3
+#For each dollar made, they earn a compliment
+print("You have earned $", money, "! Here are", money, "compliments!")
+for i in range(money):
+    print(random.choice(happiness_phrases))
+
+```
+ Successfully lists the amount of compliments for each dollar earned
 
 ## Conclusion
 In conclusion, this repository presents a collection of three engaging games related to gambling: Blackjack, Higher or Lower, and Plinko. Despite the gambling theme, there is no real-life money at stake, and the reward for completing the games is a series of uplifting compliments designed to make players feel better about themselves. Overall, the project was a success. 
