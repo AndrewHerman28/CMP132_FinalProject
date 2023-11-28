@@ -59,7 +59,14 @@ The user's balance is tracked globally and updated based on the outcomes of each
 A series of positive compliments is stored in a list
 Compliments are randomly selected and displayed to the user as a reward after playing a game.
 The amount of compliments is equal to the amount of money obtained after quiting the game.
+
 ## Testing the Code.
+### Opening Each Game
+test- game_type = input()
+results-
+* Blackjack: Successfully opens Blackjack
+* Higher or Lower: Successfully opens Higher or Lower
+* Plinko: Successfully opens Plinko
 
 
 ## How Justin learned GUI in python
