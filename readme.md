@@ -6,7 +6,7 @@ The goal for this repository contains a collection of three different games rela
 2. Higher or Lower:
   * Guess whether the next random number will be higher or lower than the current number. The numbers are constrained to a standard deck of cards.
 3. Plinko!:
-   * A game of plinko where a ball is dropped and is randomly placed into nine different columns which holds different values.
+  * A game of plinko where a ball is dropped and is randomly placed into nine different columns which holds different values.
 
 ## How to Play:
 * Blackjack:
