@@ -220,5 +220,5 @@ In conclusion, this repository presents a collection of three engaging games rel
 ## Contributers
 * Justin Kwak
 * Andrew Herman
-## How Justin learned GUI in python
+## How We learned GUI in python
 https://www.youtube.com/watch?v=ibf5cx221hk&ab_channel=NeuralNine
